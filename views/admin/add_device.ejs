@@ -1,0 +1,425 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>MySmartHome | Home</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min1.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard1.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">MySmartHome</a>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <span data-feather="home"></span>
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">
+                  <span data-feather="file"></span>
+                  About
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/add-device">
+                  <span data-feather="shopping-cart"></span>
+                  Add Device
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/show-device-status">
+                  <span data-feather="users"></span>
+                  Show Device Status
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/update-device-status">
+                  <span data-feather="bar-chart-2"></span>
+                  Update Device Status
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/delete-device-status">
+                  <span data-feather="layers"></span>
+                  Delete Device Status
+                </a>
+              </li>
+            </ul>
+
+           
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Add Device</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
+          </div>
+
+           <% if(success){ %>
+               <div class="container">
+                  <div class="alert" style="background-color: #FFFFFF;color:blue">
+                      <%= success %>
+                       <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  </div>
+               </div>
+            <% } %>
+                  <div>
+                    <a href="/add-device"><img src="reload.webp" style="width: 40px;height: 40px; float:right;margin-right: 30px;"></a>
+                  </div>
+                  <br>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form action="/add-device" method="POST"> 
+                  <div class="row">
+                     <div class="col-sm-6">
+                      <!-- text input -->
+                       <label>Name</label>
+                      <div class="form-group">
+                        <select id="cboOptions" name="deviceName" onchange="showDiv('div',this)" class="form-control" required>
+                          <option value="Wifi">Wifi</option>
+                          <option value="TV">TV</option>
+                          <option value="Music System">Music System</option>
+                          <option value="Radio">Radio</option>
+                          <option value="Security Camera">Security Camera</option>
+                          <option value="Curtains">Curtains</option>
+                          <option value="Air Conditioning">Air Conditioning</option>
+                          <option value="Indoor Heating">Indoor Heating</option>
+                          <option value="Blinds">Blinds</option>
+                          <option value="Dinning Room Lights">Dinning Room Lights</option>
+                          <option value="Bedroom Lights">Bedroom Lights</option>
+                          <option value="Table Lamp">Table Lamp</option>
+                          <option value="Refrigerator">Refrigerator</option>
+                          <option value="Stove">Stove</option>
+                          <option value="Kettle">Kettle</option>
+                          <option value="Microwave">Microwave</option>
+                          <option value="Coffee Machine">Coffee Machine</option>
+                          <option value="Roomba">Roomba</option>
+                          <option value="Pet Food Dispenser">Pet Food Dispenser</option>
+                          <option value="Garden Sprinkler">Garden Sprinkler</option>
+
+                        </select>
+                    </div>
+                   </div>
+                
+                    <div class="col-sm-6" id="div1" style="display: block">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>ON/OFF</label>
+                         <div class="form-group">
+                        <select name="onOff" class="form-control" required>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="on">ON</option>
+                          <option value="off">OFF</option>
+                        </select>
+                    </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6" id="div2">
+                      <!-- text input -->
+                     <div class="form-group">
+                        <label>OPEN/CLOSE</label>
+                         <div class="form-group">
+                        <select name="openClose" class="form-control" required>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="open">OPEN</option>
+                          <option value="close">CLOSE</option>
+                        </select>
+                    </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6" id="div3">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Temperature</label>
+                        <select name="temperature" class="form-control" required>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="-06">-06 Degree</option>
+                          <option value="-05">-05 Degree</option>
+                          <option value="-04">-04 Degree</option>
+                          <option value="-03">-03 Degree</option>
+                          <option value="-02">-02 Degree</option>
+                          <option value="-01">-01 Degree</option>
+                          <option value=" 01"> 01 Degree</option>
+                          <option value=" 02"> 02 Degree</option>
+                          <option value=" 03"> 03 Degree</option>
+                          <option value=" 04"> 04 Degree</option>
+                          <option value=" 05"> 05 Degree</option>
+                          <option value=" 06"> 06 Degree</option>
+                          <option value=" 07"> 07 Degree</option>
+                          <option value=" 08"> 08 Degree</option>
+                          <option value=" 09"> 09 Degree</option>
+                          <option value=" 10"> 10 Degree</option>
+                          <option value=" 12"> 12 Degree</option>
+                          <option value=" 13"> 13 Degree</option>
+                          <option value=" 14"> 14 Degree</option>
+                          <option value=" 15"> 15 Degree</option>
+                          <option value=" 16"> 16 Degree</option>
+                          <option value=" 17"> 17 Degree</option>
+                          <option value=" 18"> 18 Degree</option>
+                          <option value=" 19"> 19 Degree</option>
+                          <option value=" 20"> 20 Degree</option>
+                          <option value=" 21"> 21 Degree</option>
+                        </select>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6" id="div4">
+                      <!-- text input -->
+                      <label>Volume</label>
+                      <div class="form-group">
+                          <select name="volume" class="form-control" required>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="01">01</option>
+                          <option value="02">02 </option>
+                          <option value="03">03 </option>
+                          <option value="04">04 </option>
+                          <option value="05">05 </option>
+                          <option value="06">06 </option>
+                        </select>
+                      </div>
+                    </div>
+                     <div class="col-sm-6" id="div5">
+                      <!-- text input -->
+                      <label>Channel</label>
+                      <div class="form-group">
+                          <select name="channel" class="form-control" required>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="01">01</option>
+                          <option value="02">02 </option>
+                          <option value="03">03 </option>
+                          <option value="04">04 </option>
+                          <option value="05">05 </option>
+                          <option value="06">06 </option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                  </div>
+                 
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-primary" placeholder="Enter ...">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card-body -->
+
+         
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+
+    <script type="text/javascript">
+// function showDiv(device, element){
+//     document.getElementById(device).style.display = element.value == "Fan" ? 'block' : 'none';
+// }
+
+// div1  onOff
+// div2  open 
+// div3  tempp
+// div4  volume
+// div5  channel
+
+    function showDiv(prefix,chooser) 
+    {
+            var selectedOption = (chooser.options[chooser.selectedIndex].value);
+            console.log(selectedOption)
+
+            if(selectedOption == "Wifi")
+            {
+              // window.reload('http://localhost:8089/add-device')
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "TV")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+            }
+            if(selectedOption == "Music System")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Radio")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Security Camera")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Curtains")
+            {
+                displayDiv(prefix,"1");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Air Conditioning")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Indoor Heating")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Blinds")
+            {
+                displayDiv(prefix,"1");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Dinning Room Lights")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Bedroom Lights")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+             if(selectedOption == "Table Lamp")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+             if(selectedOption == "Refrigerator")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+             if(selectedOption == "Stove")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+
+             if(selectedOption == "Kettle")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+              if(selectedOption == "Microwave")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+
+             if(selectedOption == "Coffee Machine")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+             if(selectedOption == "Roomba")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+             if(selectedOption == "Pet Food Dispenser")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+            if(selectedOption == "Garden Sprinkler")
+            {
+                displayDiv(prefix,"2");
+                displayDiv(prefix,"3");
+                displayDiv(prefix,"4");
+                displayDiv(prefix,"5");
+            }
+
+
+
+
+    }
+
+    function displayDiv(prefix,suffix) 
+    {
+            var div = document.getElementById(prefix+suffix);
+            div.style.display = 'none';
+    }
+</script>
+
+  </body>
+</html>

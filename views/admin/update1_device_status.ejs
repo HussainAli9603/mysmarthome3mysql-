@@ -1,0 +1,284 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>MySmartHome | Home</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min1.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/dashboard1.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">MySmartHome</a>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">
+                  <span data-feather="home"></span>
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">
+                  <span data-feather="file"></span>
+                  About
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/add-device">
+                  <span data-feather="shopping-cart"></span>
+                  Add Device
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/show-device-status">
+                  <span data-feather="users"></span>
+                  Show Device Status
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/update-device-status">
+                  <span data-feather="bar-chart-2"></span>
+                  Update Device Status
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/delete-device-status">
+                  <span data-feather="layers"></span>
+                  Delete Device Status
+                </a>
+              </li>
+            </ul>
+
+           
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Update Device Status</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
+          </div>
+
+          <div class="content-wrapper">
+    <div class="container-fluid">
+        <h3>Update Device Status</h3>
+        <div class="row">
+            <!-- /.card-header -->
+              <div class="card-body">
+                <form action="/update1-device-status/<%= getDevice.id %>" method="POST"> 
+                  <div class="row">
+                     <div class="col-sm-6">
+                      <!-- text input -->
+                       <label>Name</label>
+                      <div class="form-group">
+                        <select name="deviceName" class="form-control" required>
+                          <option value="<%= getDevice.name %>"><%= getDevice.name %></option>
+                           <option value="Wifi">Wifi</option>
+                          <option value="TV">TV</option>
+                          <option value="Music System">Music System</option>
+                          <option value="Radio">Radio</option>
+                          <option value="Security Camera">Security Camera</option>
+                          <option value="Curtaines">Curtaines</option>
+                          <option value="Air Conditioning">Air Conditioning</option>
+                          <option value="Indoor Heating">Indoor Heating</option>
+                          <option value="Blinds">Blinds</option>
+                          <option value="Dinning Room Lights">Dinning Room Lights</option>
+                          <option value="Bedroom Lights">Bedroom Lights</option>
+                          <option value="Table Lamp">Table Lamp</option>
+                          <option value="Refrigerator">Refrigerator</option>
+                          <option value="Stove">Stove</option>
+                          <option value="Kettle">Kettle</option>
+                          <option value="Microwave">Microwave</option>
+                          <option value="Coffee Machine">Coffee Machine</option>
+                          <option value="Roomba">Roomba</option>
+                          <option value="Pet Food Dispenser">Pet Food Dispenser</option>
+                          <option value="Garden Sprinkler">Garden Sprinkler</option>
+
+                        </select>
+                    </div>
+                   </div>
+                  <% if(getDevice.onOff == "NotApplicable"){ %>
+                  <% }else{ %>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>ON/OFF</label>
+                         <div class="form-group">
+                        <select name="onOff" class="form-control" required>
+                          <option value="<%= getDevice.onOff %>" style='color: gray'>
+                            <%= getDevice.onOff %></option>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="on">ON</option>
+                          <option value="off">OFF</option>
+                        </select>
+                    </div>
+                      </div>
+                    </div>
+                     <% } %>
+                   
+                  </div>
+                  <div class="row">
+                     <% if(getDevice.openClose == "NotApplicable"){ %>
+                  <% }else{ %>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                     <div class="form-group">
+                        <label>OPEN/CLOSE</label>
+                         <div class="form-group">
+                        <select name="openClose" class="form-control" required>
+                          <option value="<%= getDevice.openClose %>">
+                            <%= getDevice.openClose %></option>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="open">OPEN</option>
+                          <option value="close">CLOSE</option>
+                        </select>
+                    </div>
+                      </div>
+                    </div>
+                    <% } %>
+                     <% if(getDevice.temperature == "NotApplicable"){ %>
+                  <% }else{ %>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Temperature</label>
+                        <select name="temperature" class="form-control" required>
+                          <option value="<%= getDevice.temperature %>">
+                            <%= getDevice.temperature %></option>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="-06">-06 Degree</option>
+                          <option value="-05">-05 Degree</option>
+                          <option value="-04">-04 Degree</option>
+                          <option value="-03">-03 Degree</option>
+                          <option value="-02">-02 Degree</option>
+                          <option value="-01">-01 Degree</option>
+                          <option value=" 01"> 01 Degree</option>
+                          <option value=" 02"> 02 Degree</option>
+                          <option value=" 03"> 03 Degree</option>
+                          <option value=" 04"> 04 Degree</option>
+                          <option value=" 05"> 05 Degree</option>
+                          <option value=" 06"> 06 Degree</option>
+                          <option value=" 07"> 07 Degree</option>
+                          <option value=" 08"> 08 Degree</option>
+                          <option value=" 09"> 09 Degree</option>
+                          <option value=" 10"> 10 Degree</option>
+                          <option value=" 12"> 12 Degree</option>
+                          <option value=" 13"> 13 Degree</option>
+                          <option value=" 14"> 14 Degree</option>
+                          <option value=" 15"> 15 Degree</option>
+                          <option value=" 16"> 16 Degree</option>
+                          <option value=" 17"> 17 Degree</option>
+                          <option value=" 18"> 18 Degree</option>
+                          <option value=" 19"> 19 Degree</option>
+                          <option value=" 20"> 20 Degree</option>
+                          <option value=" 21"> 21 Degree</option>
+                        </select>
+                      </div>
+                    </div>
+                    <% } %>
+                   
+                  </div>
+                  <div class="row">
+                    <% if(getDevice.volume == "NotApplicable"){ %>
+                  <% }else{ %>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <label>Volume</label>
+                      <div class="form-group">
+                          <select name="volume" class="form-control" required>
+                          <option value="<%= getDevice.volume %>">
+                            <%= getDevice.volume %></option>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="01">01</option>
+                          <option value="02">02 </option>
+                          <option value="03">03 </option>
+                          <option value="04">04 </option>
+                          <option value="05">05 </option>
+                          <option value="06">06 </option>
+                        </select>
+                      </div>
+                    </div>
+                   <% } %>
+                  </div>
+                   <div class="row">
+                    <% if(getDevice.channel == "NotApplicable"){ %>
+                  <% }else{ %>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <label>Channel</label>
+                      <div class="form-group">
+                          <select name="channel" class="form-control" required>
+                          <option value="<%= getDevice.channel %>">
+                            <%= getDevice.channel %></option>
+                          <option value="NotApplicable">NA(not applicable)</option>
+                          <option value="01">01</option>
+                          <option value="02">02 </option>
+                          <option value="03">03 </option>
+                          <option value="04">04 </option>
+                          <option value="05">05 </option>
+                          <option value="06">06 </option>
+                        </select>
+                      </div>
+                    </div>
+                    <% } %>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-primary" placeholder="Enter ...">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card-body -->
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+
+</div>
+
+         
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+   
+  </body>
+</html>
